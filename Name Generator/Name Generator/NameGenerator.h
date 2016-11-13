@@ -15,8 +15,8 @@ public:
 	char randomLowercase();
 	char checkConsonants();
 	char getLastLetter();
-
-	void display();
+	void displayLastLetter();
+	void displayName();
 private:
 	int Race;//decides style of name(orc, dragon, etc.)
 	int Sex;//decides whether name is more masculine/feminine/other

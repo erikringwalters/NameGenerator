@@ -51,11 +51,11 @@ char NameGenerator::checkConsonants()
 		
 	for (int i = 0; i < 5; i++)
 	{
-		if (Name[Name.size()] == Vowel[i])
+		if (Name[Name.size() - 1] == Vowel[i])
 		{//checks if last letter is a vowel ^
 			LastIsVowel = true;
 		}
-		if (Name[Name.size() - 1] == Vowel[i])
+		if (Name[Name.size() - 2] == Vowel[i])
 		{
 			secondLastIsVowel = true;
 		}
@@ -65,7 +65,7 @@ char NameGenerator::checkConsonants()
 		return randomVowel();
 	}
 	else
-		return randomConsonant();
+		return randomLowercase();
 }
 //Definition of writeName
 void NameGenerator::writeGenericName(int size)
@@ -88,9 +88,13 @@ void NameGenerator::writeGenericName(int size)
 		}
 	
 }
-
-//Definition of display()
-void NameGenerator::display()
+//Definition of displayLastLetter
+void NameGenerator::displayLastLetter()
+{
+	cout << Name[Name.size() - 1] << endl;
+}
+//Definition of displayName()
+void NameGenerator::displayName()
 {
 	cout << Name << endl;
 }
