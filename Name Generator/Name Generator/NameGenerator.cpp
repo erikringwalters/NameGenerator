@@ -4,6 +4,8 @@ NameGenerator::NameGenerator()
 {
 	Sex = 0;
 	Race = 0;
+	Size = 0;
+	DesiredSize = 10;
 }
 //Definition of getRace(int r)
 void NameGenerator::getRace(int r)
@@ -21,33 +23,69 @@ char NameGenerator::getRandomVowel()
 	char vowel[5] = { 'a','e','i','o','u' };
 	return vowel[rand() % 5];
 }
+//Definition of getRandomLowerCase
+char NameGenerator::getRandomLowercase()
+{
+	char randomLowercase = rand() % 26 + 97;
+	//97 - 122 is lowercase a - z.
+	return randomLowercase;
+}
+//Definition of getLastLetter()
+char NameGenerator::getLastLetter()
+{
+	return Name[Name.size()];
+}
+//Definition of checkConsonants
+char NameGenerator::checkConsonants()
+{
+	char vowel[5] = { 'a','e','i','o','u' };
+	bool LastIsVowel = false;
+	bool secondLastIsVowel = false;
+		
+	for (int i = 0; i < 5; i++)
+	{
+		if (Name[Name.size()] == vowel[i])
+		{//checks if last letter is a vowel ^
+			LastIsVowel = true;
+		}
+		if (Name[Name.size() - 1] == vowel[i])
+		{
+			secondLastIsVowel = true;
+		}
+	}
+	if (LastIsVowel && secondLastIsVowel)//if it sees that there is indeed a vowel 
+		//amongst the last two letters, it'll return any letter, otherwise it'll return a vowel only.
+	{
+		return getRandomLowercase();
+	}
+	else
+		return getRandomVowel();
+}
 //Definition of writeName
-void NameGenerator::writeName()
+void NameGenerator::writeGenericName(int size)
 {
 	srand(time(NULL));
 	string tempName = "";
-	char firstLetter = rand() % 26 + 65;//initialized because
+	char firstLetter = rand() % 26 + 65;
+	//65 - 90 is capital A - Z.
+	
+
 	char charTemp;//for individual characters
 	string stringTemp = "";//for several characters
 	enum gender{MALE, FEMALE, OTHER};
-	switch (MALE)//defaults to male
-	{
-	case MALE:
-		tempName += firstLetter;//builds a name through piecing random characters together
-		tempName += getRandomVowel();
-		break;
-	case FEMALE:
-		tempName += firstLetter;
-		break;
-	case OTHER:
-		tempName += firstLetter;
-	}
-	Name = tempName;
+	
+		Name += firstLetter;//builds a name by piecing random characters together
+		Name += getRandomVowel();
+		for (int i = 0; i <= DesiredSize/2; i++)
+		{
+			Name += checkConsonants();
+		}
+	
 }
-//65 - 90 is capital A - Z.
-//97 - 122 is lowercase a - z.
+
 //Definition of display()
 void NameGenerator::display()
 {
 	cout << Name << endl;
 }
+

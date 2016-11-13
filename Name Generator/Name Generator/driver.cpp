@@ -3,17 +3,23 @@ void main()
 {
 	srand(time(NULL));
 	char testLetter;
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	testLetter = rand() % 26 + 65;//testing random letter ranges.
-	//	cout << testLetter << endl;
-	//}
-	NameGenerator a;
+
+	NameGenerator a[10], b, c, d, e, f;
+	NameGenerator g;
 	int sex = 0;
 	int race;
-	cout << "Please choose your sex: (1. Male 2. Female) \n";
-	cin >> sex;
-	a.getSex(sex);
-	a.writeName();
-	a.display();
+	int sizeD = rand() % 5 + 10;
+	b.writeGenericName(sizeD);
+	b.display();
+	c.writeGenericName(sizeD);
+	c.display();
+	g.writeGenericName(sizeD);
+	g.display();
+	for (int i = 0; i < 10; i++)
+	{
+		srand(time(NULL));
+		a[i].writeGenericName(sizeD);
+		a[i].display();
+	}
+	
 }
