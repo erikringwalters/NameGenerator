@@ -6,13 +6,6 @@ NameGenerator::NameGenerator()
 	Race = 0;
 	Size = 0;
 	DesiredSize = 10;
-	for (int c = 'b'; c < 'z'; c++)
-	{//from 'b' to 'z'
-		if (c != 'e' && c != 'i' && c != 'o' && c != 'u')//if not vowel, assign consonant.
-		{
-			Consonant[c] = c;
-		}
-	}
 }
 //Definition of getRace(int r)
 void NameGenerator::getRace(int r)
