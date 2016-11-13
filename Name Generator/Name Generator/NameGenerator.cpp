@@ -6,6 +6,13 @@ NameGenerator::NameGenerator()
 	Race = 0;
 	Size = 0;
 	DesiredSize = 10;
+	for (int c = 'b'; c < 'z'; c++)
+	{//from 'b' to 'z'
+		if (c != 'e' && c != 'i' && c != 'o' && c != 'u')//if not vowel, assign consonant.
+		{
+			Consonant[c] = c;
+		}
+	}
 }
 //Definition of getRace(int r)
 void NameGenerator::getRace(int r)
@@ -20,8 +27,15 @@ void NameGenerator::getSex(int s)
 //Definition of getRandomVowel()
 char NameGenerator::getRandomVowel()
 {
-	char vowel[5] = { 'a','e','i','o','u' };
-	return vowel[rand() % 5];
+	
+	return Vowel[rand() % 5];
+}
+//Definition of getRandomConsonant();
+char NameGenerator::getRandomConsonant()
+{
+	return Consonant[rand() % 21];
+	
+		//97 - 122 is lowercase a - z.
 }
 //Definition of getRandomLowerCase
 char NameGenerator::getRandomLowercase()
@@ -38,28 +52,28 @@ char NameGenerator::getLastLetter()
 //Definition of checkConsonants
 char NameGenerator::checkConsonants()
 {
-	char vowel[5] = { 'a','e','i','o','u' };
+	
 	bool LastIsVowel = false;
 	bool secondLastIsVowel = false;
 		
 	for (int i = 0; i < 5; i++)
 	{
-		if (Name[Name.size()] == vowel[i])
+		if (Name[Name.size()] == Vowel[i])
 		{//checks if last letter is a vowel ^
 			LastIsVowel = true;
 		}
-		if (Name[Name.size() - 1] == vowel[i])
+		if (Name[Name.size() - 1] == Vowel[i])
 		{
 			secondLastIsVowel = true;
 		}
 	}
-	if (LastIsVowel && secondLastIsVowel)//if it sees that there is indeed a vowel 
+	if (LastIsVowel == false && secondLastIsVowel == false)//if it sees that there is indeed a vowel 
 		//amongst the last two letters, it'll return any letter, otherwise it'll return a vowel only.
 	{
-		return getRandomLowercase();
+		return getRandomVowel();
 	}
 	else
-		return getRandomVowel();
+		return getRandomConsonant();
 }
 //Definition of writeName
 void NameGenerator::writeGenericName(int size)

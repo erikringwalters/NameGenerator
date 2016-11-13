@@ -11,15 +11,6 @@ void main()
 	int sizeD = rand() % 5 + 10;
 	b.writeGenericName(sizeD);
 	b.display();
-	c.writeGenericName(sizeD);
-	c.display();
-	g.writeGenericName(sizeD);
-	g.display();
-	for (int i = 0; i < 10; i++)
-	{
-		srand(time(NULL));
-		a[i].writeGenericName(sizeD);
-		a[i].display();
-	}
+
 	
 }
