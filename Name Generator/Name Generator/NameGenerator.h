@@ -7,13 +7,13 @@ class NameGenerator
 {
 public:
 	NameGenerator();
-	/*NameGenerator(int race);
-	NameGenerator(int sex);
-	NameGenerator(int sex, int race);*/
 	void getRace(int r);
 	void getSex(int s);
+	void writeName();
+	char getRandomVowel();
+	void display();
 private:
-	int Race;
-	int Sex;
+	int Race;//decides style of name(orc, dragon, etc.)
+	int Sex;//decides whether name is more masculine/feminine/other
 	string Name;
 };
