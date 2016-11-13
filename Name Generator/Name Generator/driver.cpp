@@ -3,7 +3,6 @@ void main()
 {
 	srand(time(NULL));
 	char testLetter;
-
 	NameGenerator b;
 	int sex = 0;
 	int race;

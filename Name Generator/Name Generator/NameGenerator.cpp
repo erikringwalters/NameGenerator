@@ -27,8 +27,7 @@ char NameGenerator::randomVowel()
 char NameGenerator::randomConsonant()
 {
 	return Consonant[rand() % 21];
-	
-		//97 - 122 is lowercase a - z.
+	//97 - 122 is lowercase a - z.
 }
 //Definition of randomLowercase
 char NameGenerator::randomLowercase()
@@ -43,7 +42,7 @@ char NameGenerator::getLastLetter()
 	return Name[Name.size()];
 }
 //Definition of checkConsonants
-char NameGenerator::checkConsonants()
+char NameGenerator::organizeCheck()
 {
 	
 	bool LastIsVowel = false;
@@ -64,6 +63,14 @@ char NameGenerator::checkConsonants()
 	{
 		return randomVowel();
 	}
+	if (Name[Name.size() - 1] == 'q')//should have 'u' after 'q'
+	{
+		return 'u';
+	}
+	if ((Name[Name.size() - 1]) == 'x')//shouldn't have consonant successing 'x'
+	{
+		return randomVowel();
+	}
 	else
 		return randomLowercase();
 }
@@ -74,8 +81,6 @@ void NameGenerator::writeGenericName(int size)
 	string tempName = "";
 	char firstLetter = rand() % 26 + 65;
 	//65 - 90 is capital A - Z.
-	
-
 	char charTemp;//for individual characters
 	string stringTemp = "";//for several characters
 	enum gender{MALE, FEMALE, OTHER};
@@ -84,7 +89,7 @@ void NameGenerator::writeGenericName(int size)
 		Name += randomVowel();
 		for (int i = 0; i <= DesiredSize/2; i++)
 		{
-			Name += checkConsonants();
+			Name += organizeCheck();
 		}
 	
 }

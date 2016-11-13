@@ -13,7 +13,7 @@ public:
 	char randomVowel();
 	char randomConsonant();
 	char randomLowercase();
-	char checkConsonants();
+	char organizeCheck();
 	char getLastLetter();
 	void displayLastLetter();
 	void displayName();
