@@ -17,21 +17,21 @@ void NameGenerator::getSex(int s)
 {
 	Sex = s;
 }
-//Definition of getRandomVowel()
-char NameGenerator::getRandomVowel()
+//Definition of randomVowel()
+char NameGenerator::randomVowel()
 {
 	
 	return Vowel[rand() % 5];
 }
-//Definition of getRandomConsonant();
-char NameGenerator::getRandomConsonant()
+//Definition of randomConsonant();
+char NameGenerator::randomConsonant()
 {
 	return Consonant[rand() % 21];
 	
 		//97 - 122 is lowercase a - z.
 }
-//Definition of getRandomLowerCase
-char NameGenerator::getRandomLowercase()
+//Definition of randomLowercase
+char NameGenerator::randomLowercase()
 {
 	char randomLowercase = rand() % 26 + 97;
 	//97 - 122 is lowercase a - z.
@@ -60,13 +60,12 @@ char NameGenerator::checkConsonants()
 			secondLastIsVowel = true;
 		}
 	}
-	if (LastIsVowel == false && secondLastIsVowel == false)//if it sees that there is indeed a vowel 
-		//amongst the last two letters, it'll return any letter, otherwise it'll return a vowel only.
+	if (LastIsVowel == false && secondLastIsVowel == false)
 	{
-		return getRandomVowel();
+		return randomVowel();
 	}
 	else
-		return getRandomConsonant();
+		return randomConsonant();
 }
 //Definition of writeName
 void NameGenerator::writeGenericName(int size)
@@ -82,7 +81,7 @@ void NameGenerator::writeGenericName(int size)
 	enum gender{MALE, FEMALE, OTHER};
 	
 		Name += firstLetter;//builds a name by piecing random characters together
-		Name += getRandomVowel();
+		Name += randomVowel();
 		for (int i = 0; i <= DesiredSize/2; i++)
 		{
 			Name += checkConsonants();

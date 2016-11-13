@@ -4,8 +4,7 @@ void main()
 	srand(time(NULL));
 	char testLetter;
 
-	NameGenerator a[10], b, c, d, e, f;
-	NameGenerator g;
+	NameGenerator b;
 	int sex = 0;
 	int race;
 	int sizeD = rand() % 5 + 10;
